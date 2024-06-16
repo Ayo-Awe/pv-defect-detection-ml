@@ -27,6 +27,11 @@ class PredictionResponse(BaseModel):
     predictions: List[Detection]
 
 
+@app.get("/status")
+async def status():
+    return {"status": True}
+
+
 @app.post("/predict", response_model=PredictionResponse)
 async def predict(file: UploadFile = File(...)):
     # Read image
